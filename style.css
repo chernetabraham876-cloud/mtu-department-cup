@@ -1,0 +1,381 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f4f8;
+    color: #222;
+}
+
+header {
+    background: #24104f;
+    color: white;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+header h1 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 15px;
+}
+
+h2 {
+    text-align: center;
+    margin: 25px 10px;
+    color: #24104f;
+}
+
+body > h1,
+body > p {
+    text-align: center;
+    margin: 20px;
+}
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #24104f;
+    font-weight: bold;
+    margin: 10px;
+}
+section {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#teams-list {
+    text-align: center;
+    padding: 15px;
+}
+#teams-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px 0;
+}
+
+#teams-list p {
+    background: #f1f4f8;
+    padding: 15px 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: #24104f;
+}
+
+#fixtures-list {
+    text-align: center;
+    padding: 15px;
+}
+
+.match {
+    background: #f1f4f8;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #24104f;
+}
+
+#table-container {
+    overflow-x: auto;
+    padding: 10px;
+}
+
+#table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+#table-container th,
+#table-container td {
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#table-container th {
+    background: #24104f;
+    color: white;
+}
+
+#table-container tr:nth-child(even) {
+    background: #f1f4f8;
+}
+#admin {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#admin input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+#admin button {
+    background: #24104f;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Professional Match Cards */
+.match {
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 15px 0;
+    border-left: 5px solid #24104f;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.match p {
+    color: #666;
+    margin: 8px 0;
+}
+
+.match h3 {
+    color: #24104f;
+    font-size: 18px;
+    margin: 12px 0;
+}
+/* Professional Football Match Design */
+
+.match {
+    background: #24104f;
+    color: white;
+    border-radius: 15px;
+    padding: 20px 12px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.match-week {
+    color: #c9b8ff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.match-teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.team-side {
+    flex: 1;
+    min-width: 0;
+}
+
+.team-side small {
+    color: #c9b8ff;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.team-side h3 {
+    color: white;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.match-score strong {
+    font-size: 30px;
+    color: white;
+}
+
+.match-status {
+    color: #8fe3a3;
+    font-weight: bold;
+    margin-top: 18px;
+}
+/* Professional League Table */
+
+#table-container table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#table-container th {
+    background: #24104f;
+    color: white;
+    padding: 14px 8px;
+    font-size: 13px;
+}
+
+#table-container td {
+    padding: 13px 8px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+#table-container tr:nth-child(even) {
+    background: #f3f1f9;
+}
+
+#table-container tr:hover {
+    background: #e8e0ff;
+}
+
+#table-container td:nth-child(2) {
+    text-align: left;
+    font-weight: bold;
+}
+
+#table-container td:last-child {
+    font-weight: bold;
+    color: #24104f;
+}
+
+/* MTU Cup Top 4 - Green */
+
+#table-container tr.top-1,
+#table-container tr.top-2,
+#table-container tr.top-3,
+#table-container tr.top-4 {
+    background: #c8f7d2;
+    font-weight: bold;
+}
+
+
+/* Top Scorers Design */
+
+#top-scorers {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+}
+
+#top-scorers h2 {
+    color: #24104f;
+    margin-bottom: 15px;
+}
+
+#scorers-container {
+    overflow-x: auto;
+}
+
+/* Top Scorers Table Spacing */
+
+#scorers-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    min-width: 500px;
+}
+
+#scorers-container th,
+#scorers-container td {
+    padding: 15px 12px;
+    text-align: center;
+}
+
+#scorers-container th {
+    background: #24104f;
+    color: white;
+}
+
+#scorers-container td {
+    background: #f0f0f5;
+}
+
+#scorers-container td:nth-child(2) {
+    text-align: left;
+}
+
+#scorers-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    min-width: 500px;
+}
+
+#scorers-container th,
+#scorers-container td {
+    padding: 15px 12px;
+    text-align: center;
+}
+
+#scorers-container th {
+    background: #24104f;
+    color: white;
+}
+
+#scorers-container td {
+    background: #f0f0f5;
+}
+
+#scorers-container td:nth-child(2) {
+    text-align: left;
+}
+
+#statistics {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+}
+
+#statistics h2 {
+    color: #24104f;
+    margin-bottom: 20px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: #24104f;
+    color: white;
+    padding: 20px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.stat-card p {
+    font-size: 25px;
+    font-weight: bold;
+    color: #c9b8ff;
+}
+
+
