@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTU Department Cup</title>
+
+<link rel="stylesheet" href="style.css">
+
+  
+</head>
+<body>
+
+<header>
+    <h1>🏆 MTU DEPARTMENT CUP</h1>
+    <p>Inter-Department Football Championship</p>
+</header>
+
+<nav>
+    <a href="#teams">Teams</a>
+    <a href="#fixtures">Fixtures</a>
+    <a href="#table">League Table</a>
+</nav>
+    <h2>Welcome to MTU Cup!</h2>
+    <p>Football brings departments together.</p>
+<section id="teams">
+    <h2>Participating Teams</h2>
+    <div id="teams-list">
+        Loading teams...
+    </div>
+</section>
+
+<section id="fixtures">
+<h2>Team Fixtures</h2>
+
+<select id="team-filter">
+    <option value="">Select a Department</option>
+</select>
+
+<div id="fixtures-list">
+    Select a department to see fixtures.
+</div>
+
+
+
+
+
+  
+</section>
+
+<section id="table">
+    <h2>🏆 League Table</h2>
+
+<h3>Edit Existing Player</h3>
+
+<label>Select Player:</label>
+<select id="edit-player-select">
+    <option value="">Select Player</option>
+</select>
+
+<label>Player Name:</label>
+<input type="text" id="edit-player-name" placeholder="New player name">
+
+<label>Department:</label>
+<select id="edit-player-team">
+    <option value="">Select Department</option>
+</select>
+
+<label>Goals:</label>
+<input type="number" id="edit-player-goals" min="0">
+
+<button id="update-player-button">Update Player</button>
+<p id="edit-player-message"></p>
+
+<button id="delete-player-button">Delete Player</button>
+<p id="delete-player-message"></p>
+    <div id="table-container">
+        Loading league table...
+    </div>
+</section>  
+
+<section id="statistics">
+    <h2>📊 MTU Cup Statistics</h2>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>Total Matches</h3>
+            <p id="total-matches">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Goals</h3>
+            <p id="total-goals">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Top Department</h3>
+            <p id="top-department">-</p>
+        </div>
+    </div>
+</section>
+  
+<section id="top-scorers">
+    <h2>⚽ Top Scorers</h2>
+
+    <div id="scorers-container">
+        <p>Top scorers will appear here.</p>
+    </div>
+</section>  
+
+<section id="admin">
+    <h2>🔐 Admin Login</h2>
+
+    <input
+        type="email"
+        id="admin-email"
+        placeholder="Enter admin email"
+    >
+
+    <input
+        type="password"
+        id="admin-password"
+        placeholder="Enter admin password"
+    >
+
+    <button id="login-button">Login</button>
+
+    <p id="login-message"></p>
+</section>  
+<section id="score-management" style="display: none;">
+    <h2>⚽ Admin Score Management</h2>
+
+    <label>Match ID:</label>
+    <input type="number" id="match-id" placeholder="Enter match ID">
+
+    <label>Team 1 Score:</label>
+    <input type="number" id="team1-score" min="0" placeholder="Team 1 score">
+
+    <label>Team 2 Score:</label>
+    <input type="number" id="team2-score" min="0" placeholder="Team 2 score">
+
+    <button id="save-score-button">Save Score</button>
+
+    <p id="score-message"></p>
+</section>
+
+<section id="player-management" style="display: none;">
+    <h2>⚽ Add Top Scorer</h2>
+
+    <label>Player Name:</label>
+    <input type="text" id="player-name" placeholder="Enter player name">
+
+    <label>Department:</label>
+    <select id="player-team">
+        <option value="">Select Department</option>
+    </select>
+
+    <label>Goals:</label>
+    <input type="number" id="player-goals" min="0" value="0">
+
+    <button id="add-player-button">Add Player</button>
+    <p id="player-message"></p>
+</section>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+<script src="app.js"></script>
+  
+</body>
+</html>
+
+
+
