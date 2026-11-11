@@ -92,9 +92,14 @@ section {
     color: #24104f;
 }
 
+
 #table-container {
-    overflow-x: auto;
+    width: 100%;
+    overflow-x: scroll;
     padding: 10px;
+    -webkit-overflow-scrolling: touch;
+
+
 }
 
 #table-container table {
