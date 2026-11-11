@@ -641,3 +641,77 @@ document.getElementById("save-score-button").addEventListener("click", async fun
 loadTopScorers();  
 });
 
+
+// MTU COMMUNITY VOICES
+
+async function loadCommunityMessages() {
+    const container = document.getElementById("community-messages");
+
+    const { data, error } = await supabaseClient
+        .from("community_messages")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        container.textContent = "Could not load messages.";
+        console.log(error);
+        return;
+    }
+
+    container.innerHTML = "";
+
+    if (data.length === 0) {
+        container.textContent = "No messages yet. Be the first!";
+        return;
+    }
+
+    data.forEach(item => {
+        const card = document.createElement("div");
+        const name = document.createElement("strong");
+        const message = document.createElement("p");
+
+        name.textContent = item.name || "Anonymous";
+        message.textContent = item.message;
+
+        card.appendChild(name);
+        card.appendChild(message);
+        container.appendChild(card);
+    });
+}
+
+document.getElementById("submit-community-message")
+    .addEventListener("click", async () => {
+        const nameInput = document.getElementById("community-name");
+        const messageInput = document.getElementById("community-message");
+        const status = document.getElementById("community-message-status");
+
+        const message = messageInput.value.trim();
+        const name = nameInput.value.trim();
+
+        if (!message) {
+            status.textContent = "Please write a message.";
+            return;
+        }
+
+        const { error } = await supabaseClient
+            .from("community_messages")
+            .insert({
+                name: name || null,
+                message: message
+            });
+
+        if (error) {
+            status.textContent = "Could not submit message.";
+            console.log(error);
+            return;
+        }
+
+        status.textContent = "Your message was submitted successfully!";
+        nameInput.value = "";
+        messageInput.value = "";
+
+        loadCommunityMessages();
+    });
+
+loadCommunityMessages();
+
