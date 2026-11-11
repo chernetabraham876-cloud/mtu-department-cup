@@ -385,3 +385,34 @@ section {
 #player-editor {
     display: none !important;
 }
+
+
+/* PROFESSIONAL MOBILE LEAGUE TABLE */
+
+@media screen and (max-width: 600px) {
+    #league-table,
+    .league-table {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #league-table table,
+    .league-table table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        font-size: 11px;
+    }
+
+    #league-table th,
+    #league-table td,
+    .league-table th,
+    .league-table td {
+        padding: 6px 2px;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
+
