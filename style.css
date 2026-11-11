@@ -227,12 +227,12 @@ section {
 /* Professional League Table */
 
 #table-container table {
-    width: 100%;
+    width: 650px;
     min-width: 650px;
     border-collapse: collapse;
     background: white;
     border-radius: 10px;
-    overflow: hidden;
+
 }
 
 #table-container th {
