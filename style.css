@@ -378,4 +378,7 @@ section {
     color: #c9b8ff;
 }
 
+#player-editor {
+    display: none;
+}
 
