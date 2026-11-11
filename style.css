@@ -227,7 +227,7 @@ section {
 /* Professional League Table */
 
 #table-container table {
-    width: 650px;
+    width: max-content;
     min-width: 650px;
     border-collapse: collapse;
     background: white;
