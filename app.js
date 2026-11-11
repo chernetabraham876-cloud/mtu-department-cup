@@ -639,8 +639,3 @@ document.getElementById("save-score-button").addEventListener("click", async fun
 loadTopScorers();  
 });
 
-#player-editor {
-    display: none;
-}
-
-
