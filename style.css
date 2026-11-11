@@ -51,11 +51,15 @@ nav a {
     font-weight: bold;
     margin: 10px;
 }
+
 section {
     background: white;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
+    min-width: 0;
+    overflow: visible;
+
 }
 
 #teams-list {
