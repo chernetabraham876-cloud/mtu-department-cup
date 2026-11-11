@@ -642,12 +642,18 @@ loadTopScorers();
 });
 
 
+
 // MTU COMMUNITY VOICES
+
+const communityVisitorId = localStorage.getItem("mtu_community_visitor")
+    || crypto.randomUUID();
+
+localStorage.setItem("mtu_community_visitor", communityVisitorId);
 
 async function loadCommunityMessages() {
     const container = document.getElementById("community-messages");
 
-    const { data, error } = await supabaseClient
+    const { data: messages, error } = await supabaseClient
         .from("community_messages")
         .select("*")
         .order("created_at", { ascending: false });
@@ -658,14 +664,28 @@ async function loadCommunityMessages() {
         return;
     }
 
+    const { data: reactions } = await supabaseClient
+        .from("community_reactions")
+        .select("*");
+
+    const { data: replies } = await supabaseClient
+        .from("community_replies")
+        .select("*")
+        .order("created_at", { ascending: true });
+
+    const { data: userData } = await supabaseClient.auth.getUser();
+
+    const isAdmin = userData.user &&
+        userData.user.id === "ef7ae318-06a6-4264-b1d8-3d928685bf69";
+
     container.innerHTML = "";
 
-    if (data.length === 0) {
+    if (messages.length === 0) {
         container.textContent = "No messages yet. Be the first!";
         return;
     }
 
-    data.forEach(item => {
+    messages.forEach(item => {
         const card = document.createElement("div");
         const name = document.createElement("strong");
         const message = document.createElement("p");
@@ -675,12 +695,118 @@ async function loadCommunityMessages() {
 
         card.appendChild(name);
         card.appendChild(message);
+
+        // LIKE BUTTON
+        const messageReactions = (reactions || []).filter(
+            r => r.message_id === item.id
+        );
+
+        const alreadyLiked = messageReactions.some(
+            r => r.visitor_id === communityVisitorId
+        );
+
+        const likeButton = document.createElement("button");
+        likeButton.textContent = "❤️ " + messageReactions.length +
+            (alreadyLiked ? " Liked" : " Like");
+
+        likeButton.disabled = alreadyLiked;
+
+        likeButton.addEventListener("click", async () => {
+            const { error } = await supabaseClient
+                .from("community_reactions")
+                .insert({
+                    message_id: item.id,
+                    visitor_id: communityVisitorId
+                });
+
+            if (error) {
+                alert("Could not add like.");
+                console.log(error);
+                return;
+            }
+
+            loadCommunityMessages();
+        });
+
+        card.appendChild(likeButton);
+
+        // DISPLAY REPLIES
+        const messageReplies = (replies || []).filter(
+            r => r.message_id === item.id
+        );
+
+        messageReplies.forEach(reply => {
+            const replyBox = document.createElement("div");
+            const replyText = document.createElement("p");
+
+            replyText.textContent = "👑 Admin: " + reply.reply;
+            replyBox.appendChild(replyText);
+            card.appendChild(replyBox);
+        });
+
+        // ADMIN CONTROLS
+        if (isAdmin) {
+            const replyButton = document.createElement("button");
+            replyButton.textContent = "Reply";
+
+            replyButton.addEventListener("click", async () => {
+                const reply = prompt("Write your admin reply:");
+
+                if (!reply || !reply.trim()) return;
+
+                const { error } = await supabaseClient
+                    .from("community_replies")
+                    .insert({
+                        message_id: item.id,
+                        reply: reply.trim()
+                    });
+
+                if (error) {
+                    alert("Could not submit reply.");
+                    console.log(error);
+                    return;
+                }
+
+                loadCommunityMessages();
+            });
+
+            card.appendChild(replyButton);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete Comment";
+
+            deleteButton.addEventListener("click", async () => {
+                if (!confirm("Are you sure you want to delete this comment?")) {
+                    return;
+                }
+
+                const { error } = await supabaseClient
+                    .from("community_messages")
+                    .delete()
+                    .eq("id", item.id);
+
+                if (error) {
+                    alert("Could not delete comment.");
+                    console.log(error);
+                    return;
+                }
+
+                loadCommunityMessages();
+            });
+
+            card.appendChild(deleteButton);
+        }
+
         container.appendChild(card);
     });
 }
 
+
+// SUBMIT COMMUNITY MESSAGE
+
 document.getElementById("submit-community-message")
     .addEventListener("click", async () => {
+
         const nameInput = document.getElementById("community-name");
         const messageInput = document.getElementById("community-message");
         const status = document.getElementById("community-message-status");
@@ -714,4 +840,5 @@ document.getElementById("submit-community-message")
     });
 
 loadCommunityMessages();
+
 
