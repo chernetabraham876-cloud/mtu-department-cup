@@ -841,4 +841,13 @@ document.getElementById("submit-community-message")
 
 loadCommunityMessages();
 
+// Register MTU Cup app service worker
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => console.log("MTU Cup app is ready!"))
+            .catch(error => console.log("Service worker error:", error));
+    });
+}
+
 
