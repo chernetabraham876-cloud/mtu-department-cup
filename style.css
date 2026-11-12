@@ -457,5 +457,47 @@ section {
     color: #180b38;
 }
 
+/* MTU CUP WELCOME BANNER */
+
+.welcome-banner {
+    margin: 20px;
+    padding: 35px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #24104f, #49308a);
+    border-radius: 16px;
+    border-bottom: 4px solid #d4af37;
+}
+
+.welcome-tag {
+    color: #ffd76a;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.welcome-banner h2 {
+    font-size: 25px;
+    line-height: 1.4;
+    margin: 18px 0 12px;
+}
+
+.welcome-banner p {
+    color: #e8e0f7;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.welcome-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 22px;
+    background: #d4af37;
+    color: #24104f;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+}
+
 
 
