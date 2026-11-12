@@ -396,5 +396,66 @@ section {
 }
 
 
+/* MTU CUP PROFESSIONAL HEADER */
+
+.app-header {
+    background: linear-gradient(135deg, #180b38, #392078);
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+    border-bottom: 4px solid #d4af37;
+}
+
+.header-logo {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.app-header h1 {
+    font-size: 25px;
+    margin: 8px 0;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.app-header p {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #e5d9ff;
+}
+
+.season-label {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 7px 14px;
+    border: 1px solid #d4af37;
+    border-radius: 20px;
+    color: #ffd76a;
+    font-size: 11px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 8px;
+    background: #24104f;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 9px 12px;
+    border-radius: 20px;
+}
+
+.main-nav a:hover {
+    background: #d4af37;
+    color: #180b38;
+}
+
 
 
