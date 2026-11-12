@@ -534,4 +534,31 @@ section {
     margin-top: 18px;
 }
 
+/* PROFESSIONAL LEAGUE STANDINGS */
+
+#table {
+    background: #ffffff;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(36, 16, 79, 0.08);
+}
+
+#table h2 {
+    color: #24104f;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+#table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#table-container table {
+    min-width: 650px;
+}
+
 
