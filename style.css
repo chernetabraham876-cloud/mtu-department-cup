@@ -499,5 +499,39 @@ section {
     border-radius: 25px;
 }
 
+/* PROFESSIONAL MATCH CENTER */
+
+#fixtures {
+    background: #ffffff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(36, 16, 79, 0.08);
+}
+
+#fixtures h2 {
+    color: #24104f;
+    font-size: 23px;
+}
+
+.section-subtitle {
+    color: #777;
+    font-size: 13px;
+    margin-top: -8px;
+    margin-bottom: 20px;
+}
+
+#team-filter {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fafafa;
+    font-size: 15px;
+}
+
+#fixtures-list {
+    margin-top: 18px;
+}
 
 
