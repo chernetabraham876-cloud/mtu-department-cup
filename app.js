@@ -642,7 +642,38 @@ document.getElementById("save-score-button").addEventListener("click", async fun
 loadTopScorers();  
 });
 
+// SAVE MATCH SCHEDULE
 
+document.getElementById("save-schedule-button").addEventListener("click", async function () {
+
+    const matchId = document.getElementById("schedule-match-id").value;
+    const date = document.getElementById("schedule-date").value;
+    const time = document.getElementById("schedule-time").value;
+    const message = document.getElementById("schedule-message");
+
+    if (!matchId || !date || !time) {
+        message.textContent = "Please enter Match ID, date and time.";
+        return;
+    }
+
+    const { error } = await supabaseClient
+        .from("matches")
+        .update({
+            match_date: date,
+            match_time: time,
+            venue: "MTU TEPI CAMPUS FOOTBALL FIELD"
+        })
+        .eq("id", Number(matchId));
+
+    if (error) {
+        message.textContent = "Error: " + error.message;
+        return;
+    }
+
+    message.textContent = "Match schedule saved successfully!";
+
+    loadFixtures();
+});
 
 // MTU COMMUNITY VOICES
 
