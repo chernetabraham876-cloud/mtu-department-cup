@@ -168,10 +168,13 @@ card.innerHTML = `
         </div>
     </div>
 
-    <p class="match-status">${match.status}</p>
+   
+<p class="match-status">${match.status}</p>
+
+<p>📅 Date: ${match.match_date || "Not scheduled"}</p>
+<p>🕒 Time: ${match.match_time ? match.match_time.slice(0, 5) : "Not scheduled"}</p>
+<p>📍 Venue: ${match.venue || "MTU TEPI CAMPUS FOOTBALL FIELD"}</p>
 `;
-
-
           
 
           
