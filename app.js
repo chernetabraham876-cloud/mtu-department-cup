@@ -602,6 +602,7 @@ document.getElementById("login-button").addEventListener("click", async function
 
     message.textContent = "Login successful! Welcome, Admin.";
 document.getElementById("score-management").style.display = "block";  
+document.getElementById("schedule-management").style.display = "block";
 document.getElementById("player-management").style.display = "block";
 document.getElementById("player-editor").style.display = "block";
 
