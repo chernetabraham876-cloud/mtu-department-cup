@@ -227,6 +227,48 @@ async function loadTopScorers() {
 
 
 
+// LOAD TOP ASSISTS
+async function loadTopAssists() {
+    const container = document.getElementById("assists-container");
+
+    const { data, error } = await supabaseClient
+        .from("top_assists")
+        .select("player_name, assists, teams(name)")
+        .order("assists", { ascending: false });
+
+    if (error) {
+        container.textContent = "Could not load top assists.";
+        return;
+    }
+
+    if (data.length === 0) {
+        container.textContent = "No assists recorded yet.";
+        return;
+    }
+
+    container.innerHTML = `
+        <table>
+            <tr>
+                <th>Pos</th>
+                <th>Player</th>
+                <th>Department</th>
+                <th>Assists</th>
+            </tr>
+            ${data.map((player, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${player.player_name}</td>
+                    <td>${player.teams?.name || "Unknown"}</td>
+                    <td>${player.assists}</td>
+                </tr>
+            `).join("")}
+        </table>
+    `;
+}
+
+
+
+
 loadTeams();
 loadFixtures();
 async function loadLeagueTable() {
