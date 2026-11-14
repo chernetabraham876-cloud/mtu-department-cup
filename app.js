@@ -122,11 +122,12 @@ async function loadFixtures() {
             }
         });
 
-        standings.sort((a, b) =>
-            b.points - a.points ||
-            (b.gf - b.ga) - (a.gf - a.ga) ||
-            b.gf - a.gf
-        );
+        table.sort((a, b) =>
+    b.points - a.points ||
+    (b.gf - b.ga) - (a.gf - a.ga) ||
+    b.gf - a.gf ||
+    a.name.localeCompare(b.name)
+);
 
         const position = standings.findIndex(
             t => t.id == selectedTeam
@@ -193,7 +194,9 @@ async function loadTopScorers() {
     const { data, error } = await supabaseClient
         .from("top_scorers")
         .select("player_name, goals, teams(name)")
-        .order("goals", { ascending: false });
+        
+.order("goals", { ascending: false })
+.order("player_name", { ascending: true });
 
     if (error) {
         container.textContent = "Could not load top scorers.";
