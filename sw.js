@@ -1,4 +1,4 @@
-const CACHE_NAME = "mtu-cup-v1";
+const CACHE_NAME = "mtu-cup-v2";
 
 self.addEventListener("install", event => {
     event.waitUntil(
