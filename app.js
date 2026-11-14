@@ -126,7 +126,9 @@ async function loadFixtures() {
     b.points - a.points ||
     (b.gf - b.ga) - (a.gf - a.ga) ||
     b.gf - a.gf ||
-    a.name.localeCompare(b.name)
+    a.name.trim().localeCompare(b.name.trim(), undefined, {
+        sensitivity: "base"
+    })
 );
 
         const position = standings.findIndex(
