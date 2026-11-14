@@ -522,6 +522,38 @@ document.getElementById("add-player-button").addEventListener("click", async fun
     loadTopScorers();
 });
 
+// ADD PLAYER ASSISTS
+document.getElementById("add-assist-button").addEventListener("click", async function () {
+    const name = document.getElementById("assist-player-name").value.trim();
+    const team = document.getElementById("assist-player-team").value;
+    const assists = document.getElementById("assist-player-count").value;
+
+    if (!name || !team || assists === "" || Number(assists) < 0) {
+        alert("Please fill in all fields correctly.");
+        return;
+    }
+
+    const { error } = await supabaseClient
+        .from("top_assists")
+        .insert({
+            player_name: name,
+            team_id: Number(team),
+            assists: Number(assists)
+        });
+
+    if (error) {
+        alert("Error: " + error.message);
+        return;
+    }
+
+    alert("Player assists added successfully!");
+
+    document.getElementById("assist-player-name").value = "";
+    document.getElementById("assist-player-count").value = "0";
+
+    loadTopAssists();
+});
+
 async function loadEditPlayers() {
     const select = document.getElementById("edit-player-select");
 
