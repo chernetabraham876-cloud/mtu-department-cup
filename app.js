@@ -624,6 +624,10 @@ async function loadEditTeams() {
 loadEditTeams();
 loadEditPlayers();
 
+
+
+
+// UPDATE EXISTING TOP SCORER
 document.getElementById("update-player-button").addEventListener("click", async function () {
     const playerId = document.getElementById("edit-player-select").value;
     const name = document.getElementById("edit-player-name").value.trim();
@@ -631,8 +635,8 @@ document.getElementById("update-player-button").addEventListener("click", async 
     const goals = document.getElementById("edit-player-goals").value;
     const message = document.getElementById("edit-player-message");
 
-    if (!playerId || !name || !team || goals === "") {
-        message.textContent = "Please fill in all fields.";
+    if (!playerId || !name || !team || goals === "" || Number(goals) < 0) {
+        message.textContent = "Please fill in all fields correctly.";
         return;
     }
 
@@ -652,9 +656,13 @@ document.getElementById("update-player-button").addEventListener("click", async 
 
     message.textContent = "Player updated successfully!";
 
-    loadTopScorers();
-    loadEditPlayers();
+    await loadTopScorers();
+    await loadEditPlayers();
 
+    document.getElementById("edit-player-select").value = playerId;
+});
+
+// DELETE EXISTING TOP SCORER
 document.getElementById("delete-player-button").addEventListener("click", async function () {
     const playerId = document.getElementById("edit-player-select").value;
     const message = document.getElementById("delete-player-message");
@@ -683,13 +691,13 @@ document.getElementById("delete-player-button").addEventListener("click", async 
     document.getElementById("edit-player-name").value = "";
     document.getElementById("edit-player-goals").value = "";
     document.getElementById("edit-player-team").value = "";
+    document.getElementById("edit-player-select").value = "";
 
-    loadTopScorers();
-    loadEditPlayers();
+    await loadTopScorers();
+    await loadEditPlayers();
 });
 
-  
-});
+
 
 loadLeagueTable();
 loadStatistics();
