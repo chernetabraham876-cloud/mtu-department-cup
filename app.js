@@ -694,7 +694,7 @@ document.getElementById("delete-player-button").addEventListener("click", async 
 loadLeagueTable();
 loadStatistics();
 loadTopAssists();
-
+loadTopScorers();
 
 // ADMIN LOGIN
 document.getElementById("login-button").addEventListener("click", async function () {
