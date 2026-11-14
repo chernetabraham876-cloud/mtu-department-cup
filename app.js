@@ -457,6 +457,40 @@ async function loadPlayerTeams() {
     });
 }
 
+// LOAD TEAMS FOR ASSISTS
+async function loadAssistTeams() {
+    const selects = [
+        document.getElementById("assist-player-team"),
+        document.getElementById("edit-assist-team")
+    ];
+
+    const { data, error } = await supabaseClient
+        .from("teams")
+        .select("id, name")
+        .order("name");
+
+    if (error) {
+        selects.forEach(select => {
+            select.innerHTML = '<option value="">Could not load departments</option>';
+        });
+        return;
+    }
+
+    selects.forEach(select => {
+        select.innerHTML = '<option value="">Select Department</option>';
+
+        data.forEach(team => {
+            const option = document.createElement("option");
+            option.value = team.id;
+            option.textContent = team.name;
+            select.appendChild(option);
+        });
+    });
+}
+
+loadAssistTeams();
+
+
 document.getElementById("add-player-button").addEventListener("click", async function () {
     const name = document.getElementById("player-name").value.trim();
     const team = document.getElementById("player-team").value;
